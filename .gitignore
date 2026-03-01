@@ -1,0 +1,18 @@
+﻿# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+**/.idea/**
+
+# Build results
+[Bb]in/
+[Oo]bj/
+**/.vs/**
+**/deploy.out
+/src/Executables/API/errorCodes.json
+/src/Executables/Transfers.Worker/errorCodes.json
+/src/Executables/TransfersState.Worker/errorCodes.json
+/src/Executables/MobileWallet.AutomaticFundTransfer/errorCodes.json
+
+.DS_Store

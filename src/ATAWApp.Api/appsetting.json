@@ -1,0 +1,11 @@
+{
+  "Jwt": {
+    "Key": "SUPER_SECRET_KEY_123456789",
+    "Issuer": "ATAWApp",
+    "Audience": "ATAWAppUsers",
+    "ExpiryMinutes": 120
+  },
+  "ConnectionStrings": {
+    "Default": "Host=localhost;Database=atawapp;Username=postgres;Password=postgres"
+  }
+}
