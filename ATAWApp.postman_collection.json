@@ -1,0 +1,197 @@
+{
+  "info": {
+    "name": "ATAWApp API",
+    "_postman_id": "12345678-1234-1234-1234-123456789000",
+    "description": "ATAWApp Multi-Vertical Backend APIs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth - Register",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"fullName\": \"Admin User\",\n  \"phone\": \"9999999999\",\n  \"password\": \"Password@123\",\n  \"role\": \"Admin\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/auth/register",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "auth", "register"]
+        }
+      }
+    },
+    {
+      "name": "Auth - Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"phone\": \"9999999999\",\n  \"password\": \"Password@123\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/auth/login",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "auth", "login"]
+        }
+      }
+    },
+    {
+      "name": "Admin - Create Vertical",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Food\",\n  \"code\": \"FOOD\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/admin/verticals",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "admin", "verticals"]
+        }
+      }
+    },
+    {
+      "name": "Admin - Create Category",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"verticalId\": \"{{verticalId}}\",\n  \"name\": \"Indian\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/admin/categories",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "admin", "categories"]
+        }
+      }
+    },
+    {
+      "name": "Admin - Create SubCategory",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"categoryId\": \"{{categoryId}}\",\n  \"name\": \"Starter\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/admin/subcategories",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "admin", "subcategories"]
+        }
+      }
+    },
+    {
+      "name": "Admin - Create Product",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"verticalId\": \"{{verticalId}}\",\n  \"categoryId\": \"{{categoryId}}\",\n  \"subCategoryId\": \"{{subCategoryId}}\",\n  \"name\": \"Paneer Tikka\",\n  \"description\": \"Delicious starter\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/admin/products",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "admin", "products"]
+        }
+      }
+    },
+    {
+      "name": "Merchant - Register",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"ownerId\": \"{{userId}}\",\n  \"verticalId\": \"{{verticalId}}\",\n  \"name\": \"My Restaurant\",\n  \"phone\": \"8888888888\",\n  \"gstNumber\": \"GST12345\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/merchants/register",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "merchants", "register"]
+        }
+      }
+    },
+    {
+      "name": "Rider - Register",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"userId\": \"{{userId}}\",\n  \"drivingLicense\": \"DL123456\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/riders/register",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "riders", "register"]
+        }
+      }
+    },
+    {
+      "name": "Rider - Update Location",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/riders/{{riderId}}/location?lat=28.6139&lng=77.2090",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "riders", "{{riderId}}", "location"],
+          "query": [
+            { "key": "lat", "value": "28.6139" },
+            { "key": "lng", "value": "77.2090" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Customer - Create Order",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customerId\": \"{{userId}}\",\n  \"merchantId\": \"{{merchantId}}\",\n  \"verticalId\": \"{{verticalId}}\",\n  \"totalAmount\": 450,\n  \"lat\": 28.6139,\n  \"lng\": 77.2090\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/orders",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "orders"]
+        }
+      }
+    }
+  ]
+}
